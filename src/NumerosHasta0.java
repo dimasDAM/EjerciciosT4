@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercici2 {
+public class NumerosHasta0 {
     public static void main(String[] args) {
         int n;
         int contador = -1;
