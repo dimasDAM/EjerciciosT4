@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class notes {
-    public static void main(Scanner[] args) {
+public class Notes {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         // CONSTANTES
         final double EXAMEN = 0.5;
@@ -30,29 +30,26 @@ public class notes {
 
             // Calcule la nota ponderada
             notaPonderada = (examen * EXAMEN) + (practica * PRACTICA) + (treball * TREBALL);
-            System.out.print("Nota ponderada:                          " + notaPonderada);
+            System.out.println("Nota ponderada:                          " + notaPonderada);
 
             if (examen < 4 || practica < 4 || treball < 4) {
                 System.out.println("Suspens automátic");
                 suspens++;
 
-            } else if ((examen < 9 || practica < 9 || treball < 9)) {
+            } else if (notaPonderada >= 4 && notaPonderada < 9) {
                 System.out.println("Aprovat");
                 aprovat++;
 
             } else {
                 System.out.println("Excel·lent");
                 excellent++;
-
             }
-
-            // RESUM
-            System.out.println("Alumnes supesos:                 ");
-            System.out.println("Alumne aprovats:                 ");
-            System.out.println("Alumnes excel·lents:             ");
-
         }
+        sc.close();
 
+        // RESUM
+        System.out.println("Alumnes supesos:                 " + suspens);
+        System.out.println("Alumne aprovats:                 " + aprovat);
+        System.out.println("Alumnes excel·lents:             " + excellent);
     }
-
 }
