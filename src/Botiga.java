@@ -5,18 +5,24 @@ public class Botiga {
         int taula = 100;
         int cadira = 100;
         int armari = 100;
+        int preuTaula = 120;
+        int preuCadira = 20;
+        int preuArmari = 200;
+        int total = 0;
+        int codi;
+        int productesAgotats = 0;
         Scanner sc = new Scanner(System.in);
 
-        while (true) {
+        System.out.println("Stock: ");
+        System.out.printf("%30s %10d %s%n", "Codi (1): Taula.  Stock actual: ", taula, " taules.");
+        System.out.printf("%30s %10d %s%n", "Codi (2): Cadira. Stock actual: ", cadira, " cadires.");
+        System.out.printf("%30s %10d %s%n", "Codi (3): Armari. Stock actual: ", armari, " armaris.");
 
-            System.out.println("Stock: ");
-            System.out.printf("%30s %10d %s%n", "Codi (1): Taula.  Stock actual: ", taula, " taules.");
-            System.out.printf("%30s %10d %s%n", "Codi (2): Cadira. Stock actual: ", cadira, " cadires.");
-            System.out.printf("%30s %10d %s%n", "Codi (3): Armari. Stock actual: ", armari, " armaris.");
+        do {
 
             System.out.println();
-            System.out.print("Introduisxca codi:         ");
-            int codi = sc.nextInt();
+            System.out.print("Introduisxca codi (0 per sortir):         ");
+            codi = sc.nextInt();
             sc.nextLine();
 
             switch (codi) {
@@ -25,43 +31,92 @@ public class Botiga {
                     break;
 
                 case 1:
-                    if (taula < 1) {
-                        System.out.println("Estoc insuficient.");
+                    if (taula == 0) {
+                        System.out.println();
+                        System.out.println("STOCK ESGOTAT.");
+                        System.out.println();
                         break;
                     }
                     System.out.print("Introduixca cantitat:    ");
                     int unitatsTaula = sc.nextInt();
+                    if (unitatsTaula > taula) {
+                        System.out.println();
+                        System.out.println("STOCK INSUFICIENT.Tan sols pot demanar " + taula + " unitats");
+                        System.out.println();
+                        break;
+                    }
+                    total += unitatsTaula * preuTaula;
                     taula -= unitatsTaula;
                     break;
 
                 case 2:
 
-                    if (cadira < 1) {
-                        System.out.println("Estoc insuficient.");
+                    if (cadira == 0) {
+                        System.out.println();
+                        System.out.println("STOCK ESGOTAT.");
+                        System.out.println();
                         break;
                     }
                     System.out.print("Introduixca cantitat:    ");
                     int unitatsCadira = sc.nextInt();
-                    taula -= unitatsCadira;
+
+                    if (unitatsCadira > cadira) {
+                        System.out.println();
+                        System.out.println("STOCK INSUFICIENT. Tan sols pot demanar " + cadira + " unitats");
+                        System.out.println();
+                        break;
+                    }
+                    total += unitatsCadira * preuCadira;
+                    cadira -= unitatsCadira;
                     break;
 
                 case 3:
-                    if (armari < 1) {
-                        System.out.println("Estoc insuficient.");
+                    if (armari == 0) {
+                        System.out.println();
+                        System.out.println("STOCK ESGOTAT.");
+                        System.out.println();
                         break;
-                    }                    
+                    }
                     System.out.print("Introduixca cantitat:    ");
                     int unitatsArmari = sc.nextInt();
-                    taula -= unitatsArmari;
+                    if (unitatsArmari > armari) {
+                        System.out.println();
+                        System.out.println("STOCK INSUFICIENT. Tan sols pot demanar " + armari + " unitats");
+                        System.out.println();
+                        break;
+                    }
+                    total += unitatsArmari * preuArmari;
+                    armari -= unitatsArmari;
                     break;
 
                 default:
+                    System.out.println();
+                    System.out.println("Codi incorrecte. Torneu a introduir codi.");
+                    System.out.println();
                     break;
             }
-sc.close();
+        } while (codi != 0);
 
-        } 
-       
+        if (taula == 0) {
+            productesAgotats += 1;
+        }
+        if (cadira == 0) {
+            productesAgotats += 1;
+        }
+        if (armari == 0) {
+            productesAgotats += 1;
+        }
+
+        System.out.printf("%-32s %10d %n", "Valor total del pedido: ", total);
+        System.out.println(productesAgotats + " productes agotats.");
+        if (taula == 0) {
+            System.out.println("Stock de taula esgotat.");
+        }
+        if (cadira == 0) {
+            System.out.println("Stock de cadires esgotat.");
+        }
+        if (armari == 0) {
+            System.out.println("Stock de armaris esgotat.");
+        }
     }
-
 }
