@@ -55,8 +55,8 @@ public class Biblioteca {
                 totalRecarrec += recarrec;
 
                 System.out.println();
-                System.out.printf("%35d%s%n",retraso , " dies de retraso.");
-                System.out.printf("%37.2f%s%n",recarrec , "€ de recarrec.");
+                System.out.printf("%35d%s%n", retraso, " dies de retraso.");
+                System.out.printf("%37.2f%s%n", recarrec, "€ de recarrec.");
             } else {
                 System.out.print("No esta atrasat.");
             }

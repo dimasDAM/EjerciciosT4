@@ -47,6 +47,7 @@ public class Botiga {
                     }
                     total += unitatsTaula * preuTaula;
                     taula -= unitatsTaula;
+
                     break;
 
                 case 2:
@@ -98,13 +99,13 @@ public class Botiga {
         } while (codi != 0);
 
         if (taula == 0) {
-            productesAgotats += 1;
+            productesAgotats++;
         }
         if (cadira == 0) {
-            productesAgotats += 1;
+            productesAgotats++;
         }
         if (armari == 0) {
-            productesAgotats += 1;
+            productesAgotats++;
         }
 
         System.out.printf("%-32s %10d %n", "Valor total del pedido: ", total);
@@ -118,5 +119,6 @@ public class Botiga {
         if (armari == 0) {
             System.out.println("Stock de armaris esgotat.");
         }
+        sc.close();
     }
 }

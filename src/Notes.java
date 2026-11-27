@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Notes {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // CONSTANTES
+        // CONSTANTES + VARIABLES
         final double EXAMEN = 0.5;
         final double PRACTICA = 0.3;
         final double TREBALL = 0.2;
